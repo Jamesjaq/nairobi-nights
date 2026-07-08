@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nairobi Nights delivers premium Kenyan nightlife events with immersive sound, VIP access, and exclusive lineups across Nairobi and Kenya.">
+    <meta name="theme-color" content="#0a0a0f">
     <title>NAIROBI NIGHTS — Premium Kenyan Party Experience</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
@@ -25,7 +27,30 @@
             background: var(--dark-bg);
             color: #fff;
             overflow-x: hidden;
+            min-height: 100vh;
             cursor: none;
+        }
+
+        button, a, .event-card {
+            outline: none;
+        }
+        .event-card,
+        .btn-primary,
+        .btn-secondary,
+        .event-btn,
+        .nav-toggle,
+        .top-btn {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .event-card { cursor: pointer; }
+        .nav-toggle:focus-visible,
+        .event-card:focus-visible,
+        .btn-primary:focus-visible,
+        .btn-secondary:focus-visible,
+        .event-btn:focus-visible,
+        .top-btn:focus-visible {
+            outline: 2px solid var(--neon-cyan);
+            outline-offset: 4px;
         }
 
         /* Custom Cursor */
@@ -100,18 +125,154 @@
         .cta-btn:hover { color: #fff; box-shadow: 0 0 30px rgba(255,0,110,0.5); }
         .cta-btn:hover::before { left: 0; }
 
+        .nav-toggle {
+            display: none; width: 44px; height: 44px; border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%; background: rgba(255,255,255,0.04); position: relative;
+            cursor: pointer; transition: transform 0.3s, border-color 0.3s;
+        }
+        .nav-toggle span {
+            position: absolute; left: 50%; width: 18px; height: 2px; background: #fff;
+            transform: translateX(-50%); transition: all 0.3s;
+        }
+        .nav-toggle span:nth-child(1) { top: 13px; }
+        .nav-toggle span:nth-child(2) { top: 21px; }
+        .nav-toggle span:nth-child(3) { top: 29px; }
+        .nav-toggle:hover { transform: scale(1.05); border-color: var(--neon-cyan); }
+        .nav-links.open { position: fixed; top: 90px; right: 2rem; background: rgba(10,10,15,0.95); border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 24px; flex-direction: column; gap: 1.5rem; padding: 2rem; width: 220px; box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+        }
+
+        .trust-bar {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto 1.5rem;
+            padding: 0.85rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            backdrop-filter: blur(18px);
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 999px;
+            text-align: center;
+            z-index: 2;
+        }
+        .trust-item { color: rgba(255,255,255,0.8); font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; }
+        .trust-item strong { display: block; margin-bottom: 0.35rem; font-size: 1rem; color: #fff; }
+
+        .hero-extra { margin-top: 2rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; align-items: center; }
+        .hero-countdown {
+            display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; justify-content: center;
+        }
+        .hero-countdown-card {
+            padding: 1rem 1.5rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px;
+            background: rgba(255,255,255,0.04); color: #fff; text-align: center;
+            min-width: 260px; backdrop-filter: blur(10px);
+        }
+        .hero-countdown-card span { display: block; font-size: 0.75rem; letter-spacing: 4px; color: rgba(255,255,255,0.55); margin-bottom: 0.6rem; }
+        .hero-countdown-card strong { display: block; font-size: 1.3rem; letter-spacing: 2px; }
+        .hero-extra .btn-secondary { min-width: 180px; }
+
+        .feature-grid { display: grid; grid-template-columns: repeat(4, minmax(220px, 1fr)); gap: 2rem; max-width: 1400px; margin: 0 auto; padding: 0 4rem; }
+        .feature-card {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px; padding: 2rem; text-align: center; transition: transform 0.35s, border-color 0.35s;
+        }
+        .feature-card:hover { transform: translateY(-10px); border-color: var(--neon-cyan); }
+        .feature-card h3 { font-family: 'Playfair Display', serif; font-size: 1.35rem; margin-bottom: 1rem; }
+        .feature-card p { color: rgba(255,255,255,0.65); line-height: 1.8; }
+
+        .subscribe { padding: 8rem 4rem; background: rgba(255,255,255,0.03); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .subscribe-content { max-width: 900px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
+        .subscribe-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 1rem; }
+        .subscribe-desc { color: rgba(255,255,255,0.65); line-height: 1.8; margin-bottom: 2.5rem; }
+        .subscribe-form { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+        .subscribe-form input { min-width: 280px; padding: 1.1rem 1.2rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); color: #fff; outline: none; }
+        .subscribe-form input::placeholder { color: rgba(255,255,255,0.5); }
+        .subscribe-form button { border-radius: 999px; }
+        .subscribe-status { margin-top: 1rem; color: rgba(0,255,255,0.9); font-size: 0.95rem; }
+        .subscribe-note { margin-top: 0.8rem; color: rgba(255,255,255,0.55); font-size: 0.9rem; }
+
+        .modal {
+            position: fixed; inset: 0; display: none; justify-content: center; align-items: center;
+            background: rgba(0,0,0,0.75); backdrop-filter: blur(8px); z-index: 2000;
+        }
+        .modal.active { display: flex; }
+        .modal-content {
+            width: min(920px, calc(100% - 3rem)); background: rgba(10,10,15,0.98); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 28px; box-shadow: 0 40px 120px rgba(0,0,0,0.55); overflow: hidden; position: relative;
+        }
+        .modal-close {
+            position: absolute; top: 1.25rem; right: 1.25rem; width: 44px; height: 44px; border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%; background: rgba(255,255,255,0.04); color: #fff; font-size: 1.5rem; cursor: pointer;
+        }
+        .modal-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; padding: 3rem; }
+        .modal-copy { color: rgba(255,255,255,0.9); }
+        .modal-copy h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 1rem; }
+        .modal-copy p { line-height: 1.8; margin-bottom: 1.5rem; }
+        .modal-meta { display: grid; gap: 1rem; }
+        .modal-meta span { font-size: 0.9rem; letter-spacing: 2px; color: rgba(255,255,255,0.55); }
+        .modal-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+        .modal-actions .btn-primary { min-width: 180px; }
+
+        .top-btn {
+            position: fixed; right: 1.5rem; bottom: 1.5rem; width: 48px; height: 48px;
+            border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.65);
+            color: #fff; display: grid; place-items: center; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s;
+            z-index: 1500; cursor: pointer;
+        }
+        .top-btn.visible { opacity: 1; visibility: visible; }
+        .top-btn:hover { transform: translateY(-3px); border-color: var(--neon-cyan); }
+
+        @media (max-width: 1024px) {
+            .features { padding: 0 2rem; }
+            .feature-grid { grid-template-columns: repeat(2, minmax(180px, 1fr)); }
+            .modal-inner { grid-template-columns: 1fr; }
+            .hero-countdown-card { min-width: 100%; }
+        }
+        @media (max-width: 768px) {
+            nav { padding: 1rem 2rem; }
+            .nav-toggle { display: inline-flex; }
+            .nav-links { display: none; position: static; width: auto; background: transparent; border: none; box-shadow: none; padding: 0; gap: 2rem; }
+            .nav-links.open { display: flex; top: 80px; right: 1rem; }
+            .nav-links a { font-size: 1rem; }
+            .hero-buttons { flex-direction: column; gap: 1rem; }
+            .hero-extra { flex-direction: column; }
+            .subscribe-form { flex-direction: column; }
+            .subscribe-form input { width: 100%; }
+            .subscribe-form button { width: 100%; }
+            .top-btn { right: 1rem; bottom: 1rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .cursor, .cursor-trail, .hero-video { display: none; }
+        }
+
         /* Hero */
         .hero {
             height: 100vh; display: flex; flex-direction: column;
             justify-content: center; align-items: center;
             position: relative; overflow: hidden; scroll-snap-align: start;
         }
+        .hero-video {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; z-index: 0; opacity: 0.4;
+            filter: brightness(0.4) saturate(1.2) contrast(1.1);
+            pointer-events: none;
+        }
         .hero-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: 
                 radial-gradient(ellipse at 20% 50%, rgba(255,0,110,0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 50%, rgba(0,245,255,0.1) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 100%, rgba(176,38,255,0.1) 0%, transparent 50%);
+                radial-gradient(ellipse at 80% 50%, rgba(0,245,255,0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 100%, rgba(176,38,255,0.12) 0%, transparent 50%),
+                linear-gradient(180deg, rgba(10,10,15,0.6), rgba(10,10,15,0.7));
             z-index: 1;
         }
         .hero-content { position: relative; z-index: 2; text-align: center; padding: 0 2rem; }
@@ -221,10 +382,11 @@
         .event-card.visible { animation: fadeInUp 0.8s ease forwards; }
         .event-card:nth-child(2).visible { animation-delay: 0.2s; }
         .event-card:nth-child(3).visible { animation-delay: 0.4s; }
-        .event-card:hover { transform: translateY(-10px); border-color: var(--neon-pink); box-shadow: 0 20px 60px rgba(255,0,110,0.2); }
+        .event-card:hover { border-color: var(--neon-pink); box-shadow: 0 20px 60px rgba(255,0,110,0.2); }
         .event-image { height: 250px; overflow: hidden; position: relative; }
         .event-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
         .event-card:hover .event-image img { transform: scale(1.1); }
+        .event-badge { position: absolute; top: 1rem; left: 1rem; background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.12); padding: 0.5rem 0.9rem; border-radius: 999px; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; color: #fff; backdrop-filter: blur(10px); }
         .event-date { position: absolute; top: 1rem; right: 1rem; background: var(--neon-pink); padding: 0.5rem 1rem; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; }
         .event-content { padding: 2rem; }
         .event-tag { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--neon-cyan); margin-bottom: 0.5rem; }
@@ -385,7 +547,12 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="logo">NAIROBI NIGHTS</div>
-        <ul class="nav-links">
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle Menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
             <li><a href="#about">About</a></li>
             <li><a href="#events">Events</a></li>
             <li><a href="#gallery">Gallery</a></li>
@@ -395,8 +562,13 @@
         <a href="#cta" class="cta-btn">Book Now</a>
     </nav>
 
+    <main>
+
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <video class="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+            <source src="assets/hero.mp4" type="video/mp4">
+        </video>
         <div class="hero-bg"></div>
         <div class="floating-orb orb-1"></div>
         <div class="floating-orb orb-2"></div>
@@ -415,6 +587,16 @@
             <div class="hero-buttons">
                 <a href="#events" class="btn-primary">Explore Events</a>
                 <a href="#about" class="btn-secondary">Our Story</a>
+                <button class="btn-secondary" id="watchTeaserBtn">Watch Teaser</button>
+            </div>
+            <div class="hero-extra">
+                <div class="hero-countdown">
+                    <div class="hero-countdown-card">
+                        <span>Next flagship event in</span>
+                        <strong id="countdownTimer" role="status" aria-live="polite">00d 00h 00m 00s</strong>
+                    </div>
+                    <a href="#events" class="btn-secondary">Claim a Spot</a>
+                </div>
             </div>
         </div>
 
@@ -478,6 +660,28 @@
         </div>
     </section>
 
+    <!-- Feature Highlights -->
+    <section class="features" id="features">
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>Immersive Sound</h3>
+                <p>World-class sound design, bass that moves your body, and curated playlists that keep the energy rising all night.</p>
+            </div>
+            <div class="feature-card">
+                <h3>VIP Access</h3>
+                <p>Fast-track entry, private lounges, bottle service, and concierge-level event support for a premium night out.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Exclusive Lineups</h3>
+                <p>Resident DJs, special guest performers, and fresh talent from Nairobi's most vibrant music scenes.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Safe Nightlife</h3>
+                <p>Trusted venues, discreet security, and seamless guest experiences designed to keep the vibe epic and worry-free.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Events Section -->
     <section class="events" id="events">
         <div class="events-header">
@@ -487,6 +691,7 @@
         <div class="events-grid">
             <div class="event-card">
                 <div class="event-image">
+                    <span class="event-badge">Limited</span>
                     <img src="https://kimi-web-img.moonshot.cn/img/ultimatewildsafaris.com/619b5eef194fe719654a5f8abbed94feb557612e.jpg" alt="Nairobi Nightclub">
                     <div class="event-date">JUL 25</div>
                 </div>
@@ -502,6 +707,7 @@
             </div>
             <div class="event-card">
                 <div class="event-image">
+                    <span class="event-badge">VIP</span>
                     <img src="https://kimi-web-img.moonshot.cn/img/luxurylifestyleawards.com/024a59636f689833785d864ef5a67836e4f0e8aa.jpg" alt="B-Club Nairobi">
                     <div class="event-date">AUG 08</div>
                 </div>
@@ -517,6 +723,7 @@
             </div>
             <div class="event-card">
                 <div class="event-image">
+                    <span class="event-badge">Beach</span>
                     <img src="https://kimi-web-img.moonshot.cn/img/static.wixstatic.com/898dcce1ed859d23b9deadca918890f37aa5dd29.jpg" alt="Kenyan DJ">
                     <div class="event-date">AUG 22</div>
                 </div>
@@ -702,6 +909,42 @@
         </div>
     </section>
 
+    <!-- Subscribe Section -->
+    <section class="subscribe">
+        <div class="subscribe-content">
+            <p class="section-label">Stay in the Loop</p>
+            <h2 class="subscribe-title">Get VIP updates before everyone else</h2>
+            <p class="subscribe-desc">Join our insider list for early ticket drops, surprise performances, and members-only after-party access.</p>
+            <form class="subscribe-form" id="subscribeForm">
+                <input type="email" id="subscribeEmail" placeholder="Enter your email" required>
+                <button type="submit" class="btn-primary">Join the List</button>
+            </form>
+            <div class="subscribe-status" id="subscribeStatus" aria-live="polite"></div>
+            <p class="subscribe-note">No spam. Just the hottest Nairobi nightlife stories delivered straight to your inbox.</p>
+        </div>
+    </section>
+
+    <div class="modal" id="eventModal" aria-hidden="true">
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDescription">
+            <button class="modal-close" id="modalClose" aria-label="Close modal">×</button>
+            <div class="modal-inner">
+                <div class="modal-copy">
+                    <p class="section-label">Event Spotlight</p>
+                    <h2 id="modalTitle">Neon Nights Festival</h2>
+                    <p id="modalDescription">Experience a next-level party with immersive lighting, global DJs and a crowd that never stops moving. Each event is designed to be one-of-a-kind, with premium production and VIP access available.</p>
+                    <div class="modal-meta">
+                        <span id="modalDate">Date: JUL 25, 2026</span>
+                        <span id="modalLocation">Location: Westlands, Nairobi</span>
+                        <span id="modalSeats">Capacity: Limited VIP & general entry</span>
+                    </div>
+                    <div class="modal-actions">
+                        <a href="#cta" class="btn-primary" id="modalTicketLink">Reserve Your Spot</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer id="contact">
         <div class="footer-grid">
@@ -732,9 +975,9 @@
             <div class="footer-col">
                 <h4>Contact</h4>
                 <ul>
-                    <li><a href="#">info@nairobinights.co.ke</a></li>
-                    <li><a href="#">+254 700 123 456</a></li>
-                    <li><a href="#">Westlands, Nairobi</a></li>
+                    <li><a href="mailto:info@nairobinights.co.ke">info@nairobinights.co.ke</a></li>
+                    <li><a href="tel:+254700123456">+254 700 123 456</a></li>
+                    <li><a href="https://maps.google.com/?q=Westlands,+Nairobi" target="_blank" rel="noopener">Westlands, Nairobi</a></li>
                     <li><a href="#">Mon-Sat: 10AM - 6PM</a></li>
                 </ul>
             </div>
@@ -742,7 +985,11 @@
         <div class="footer-bottom">
             <p>2026 Nairobi Nights. All rights reserved. Crafted with passion in Kenya.</p>
         </div>
+    </main>
+
     </footer>
+
+    <button class="top-btn" id="topBtn" aria-label="Back to top">↑</button>
 
     <script>
         // Remove loader
@@ -759,19 +1006,20 @@
         let trailX = 0, trailY = 0;
 
         document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX; mouseY = e.clientY;
+            mouseX = e.clientX;
+            mouseY = e.clientY;
             cursor.style.left = mouseX - 10 + 'px';
             cursor.style.top = mouseY - 10 + 'px';
         });
 
-        document.addEventListener('mousemove', (e) => {
-            setTimeout(() => {
-                trailX += (mouseX - trailX) * 0.1;
-                trailY += (mouseY - trailY) * 0.1;
-                cursorTrail.style.left = trailX - 4 + 'px';
-                cursorTrail.style.top = trailY - 4 + 'px';
-            }, 50);
-        });
+        function animateCursorTrail() {
+            trailX += (mouseX - trailX) * 0.12;
+            trailY += (mouseY - trailY) * 0.12;
+            cursorTrail.style.left = trailX - 4 + 'px';
+            cursorTrail.style.top = trailY - 4 + 'px';
+            requestAnimationFrame(animateCursorTrail);
+        }
+        animateCursorTrail();
 
         document.querySelectorAll('a, button, .event-card, .gallery-item, .dj-card').forEach(el => {
             el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
@@ -870,7 +1118,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.about-text, .about-image, .event-card, .gallery-item, .dj-card').forEach(el => observer.observe(el));
+        document.querySelectorAll('.about-text, .about-image, .event-card, .gallery-item, .dj-card, .feature-card, .subscribe-content, .cta-section, .trust-bar').forEach(el => observer.observe(el));
 
         // Testimonials Slider
         const track = document.getElementById('testimonialTrack');
@@ -895,14 +1143,119 @@
             });
         });
 
-        // Parallax
+        // Mobile menu toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('open'));
+        });
+
+        // Countdown timer
+        const countdownTimer = document.getElementById('countdownTimer');
+        const eventDate = new Date('2026-09-15T20:00:00');
+
+        function updateCountdown() {
+            const now = new Date();
+            const diff = eventDate - now;
+            if (diff <= 0) {
+                countdownTimer.textContent = 'Event Live Now!';
+                return;
+            }
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+            countdownTimer.textContent = `${String(days).padStart(2, '0')}d ${String(hours).padStart(2, '0')}h ${String(minutes).padStart(2, '0')}m ${String(seconds).padStart(2, '0')}s`;
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Event modal
+        const modal = document.getElementById('eventModal');
+        const modalClose = document.getElementById('modalClose');
+        const watchTeaserBtn = document.getElementById('watchTeaserBtn');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const modalDate = document.getElementById('modalDate');
+        const modalLocation = document.getElementById('modalLocation');
+        const modalSeats = document.getElementById('modalSeats');
+
+        function openModal(details) {
+            modalTitle.textContent = details.title;
+            modalDescription.textContent = details.description;
+            modalDate.textContent = `Date: ${details.date}`;
+            modalLocation.textContent = `Location: ${details.location}`;
+            modalSeats.textContent = `Capacity: ${details.seats}`;
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+        }
+
+        modalClose.addEventListener('click', closeModal);
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) closeModal();
+        });
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && modal.classList.contains('active')) closeModal();
+        });
+
+        watchTeaserBtn.addEventListener('click', () => {
+            openModal({
+                title: 'Neon Nights Festival',
+                description: 'Experience a next-level party with immersive lighting, global DJs and a crowd that never stops moving. Each event is designed to be one-of-a-kind, with premium production and VIP access available.',
+                date: 'JUL 25, 2026',
+                location: 'Westlands, Nairobi',
+                seats: 'Limited VIP & general entry'
+            });
+        });
+
+        document.querySelectorAll('.event-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const title = card.querySelector('.event-name').textContent;
+                const description = card.querySelector('.event-desc').textContent;
+                const date = card.querySelector('.event-date').textContent;
+                const location = card.querySelector('.event-tag').textContent.replace('•', '|');
+                openModal({
+                    title,
+                    description,
+                    date,
+                    location,
+                    seats: 'VIP and general admission available'
+                });
+            });
+        });
+
+        // Subscribe form
+        const subscribeForm = document.getElementById('subscribeForm');
+        const subscribeEmail = document.getElementById('subscribeEmail');
+        subscribeForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const status = document.getElementById('subscribeStatus');
+            status.textContent = 'Thanks! You’re on the list. Watch your inbox for VIP access.';
+            subscribeForm.reset();
+        });
+
+        // Back to top
+        const topBtn = document.getElementById('topBtn');
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             document.querySelectorAll('.floating-orb').forEach((orb, i) => {
                 const speed = 0.2 + (i * 0.1);
                 orb.style.transform = 'translateY(' + (scrolled * speed) + 'px)';
             });
+            if (scrolled > 500) topBtn.classList.add('visible');
+            else topBtn.classList.remove('visible');
         });
+        topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
         // Magnetic button effect
         document.querySelectorAll('.btn-primary, .cta-big-btn').forEach(btn => {
@@ -917,6 +1270,14 @@
 
         // 3D Tilt on event cards
         document.querySelectorAll('.event-card').forEach(card => {
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('role', 'button');
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    card.click();
+                }
+            });
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
